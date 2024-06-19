@@ -1,12 +1,8 @@
-import React from 'react'
+import React from 'react';
+import './Footer.css';
 
 const Footer = () => {
-  return (
-    <footer>
-        <p>Powered by</p>
-        <img src="./img/DH.png" alt='DH-logo' />
-    </footer>
-  )
-}
+  return <footer className="footer">© Clinica de Juani 2024</footer>;
+};
 
-export default Footer
+export default Footer;

@@ -1,22 +1,24 @@
-import React from "react";
+// src/components/DentistCard.jsx
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { GlobalContext } from '../context/GlobalContext';
+import './Card.css';
 
+const DentistCard = ({ dentist }) => {
+  const { state, dispatch } = useContext(GlobalContext);
 
-const Card = ({ name, username, id }) => {
-
-  const addFav = ()=>{
-    // Aqui iria la logica para agregar la Card en el localStorage
-  }
+  const addToFav = () => {
+    dispatch({ type: 'ADD_FAV', payload: dentist });
+  };
 
   return (
-    <div className="card">
-        {/* En cada card deberan mostrar en name - username y el id */}
-
-        {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
-
-        {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-        <button onClick={addFav} className="favButton">Add fav</button>
+    <div className={`card ${state.theme}`}>
+      <h3>{dentist.name}</h3>
+      <p>{dentist.username}</p>
+      <Link to={`/dentist/${dentist.id}`}>Ver detalle del paciente</Link>
+      <button onClick={addToFav}>DESTACAR</button>
     </div>
   );
 };
 
-export default Card;
+export default DentistCard;
